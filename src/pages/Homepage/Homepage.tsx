@@ -16,10 +16,15 @@ const Homepage = (props: Props) => {
 		setProducts(products.filter(i => i.id !== id));
 	};
 
-	const fetchProducts = () => {
-		ProductService.getAll().then((response: any) => {
+	const fetchProducts = async () => {
+
+		try{
+			const response = await ProductService.getAll();
 			setProducts(response.data.products);
-		});
+
+		} catch (e){
+			console.error('Error fetching products:')
+		}
 	};
 
 	return (

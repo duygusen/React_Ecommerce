@@ -13,13 +13,14 @@ type Props = {
 const ProductCard = (props: Props) => {
 	const deleteProduct = async () => {
 		try {
-			let response = await ProductService.delete(250);
+			const response = await ProductService.delete(props.product.id);
+			console.log(response);
 			if (response.status == HttpStatusCode.Ok) {
 				props.onDelete(props.product.id);
-				alert("Veri başarıyla silindi.");
+				alert("Product deleted successfully");
 			}
 		} catch (e) {
-			alert("Veri silinemedi");
+			alert("Product cannot be deleted");
 		}
 	};
 
@@ -42,7 +43,7 @@ const ProductCard = (props: Props) => {
 					}}
 					className="btn btn-danger"
 				>
-					Sil
+					Delete
 				</button>
 			</div>
 		</div>
