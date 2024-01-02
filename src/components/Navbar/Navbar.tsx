@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 type Props = {}
 
@@ -23,19 +24,19 @@ const Navbar = (props: Props) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link">
+              <Link className="nav-link" to={"/"}>
                 Homepage
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link">
+              <Link className="nav-link" to={"/about"}>
                 About
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" >
+              <Link className="nav-link" to={"/product-add"}>
                 Add
-              </a>
+              </Link>
             </li>
           </ul>
           <form className="d-flex" role="search">
