@@ -1,5 +1,4 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import React from "react";
+import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { passwordRule } from "../../utils/validation/customValidationRules";
 import FormikInput from "../../components/FormikInput/FormikInput";

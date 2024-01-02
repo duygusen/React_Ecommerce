@@ -1,4 +1,3 @@
-// CTRL + ALT + V
 export interface ProductModel {
 	id: number;
 	title: string;
