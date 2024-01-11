@@ -3,8 +3,8 @@ import {ProductModel} from "../../models/responses/ProductModel";
 import {Link} from "react-router-dom";
 import ProductService from "../../services/productService";
 import {HttpStatusCode} from "axios";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../store/actions/cartActions";
+import {useDispatch} from "react-redux";
+import {addToCart} from "../../store/slices/cartSlice";
 
 type Props = {
 	product: ProductModel;
@@ -13,7 +13,7 @@ type Props = {
 };
 
 const ProductCard = (props: Props) => {
-
+	const dispatch = useDispatch();
 
 	const deleteProduct = async () => {
 		try {
@@ -28,9 +28,8 @@ const ProductCard = (props: Props) => {
 		}
 	};
 
-	const dispatch = useDispatch();
 	const addProductToCart = () => {
-		dispatch(addToCart(props.product));
+		dispatch(addToCart({product: props.product}));
 	};
 
 	return (
