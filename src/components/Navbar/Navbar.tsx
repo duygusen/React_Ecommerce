@@ -1,8 +1,13 @@
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 type Props = {}
 
 const Navbar = (props: Props) => {
+
+  const cartState = useSelector((state: any) => state.cart);
+  
+
   return (
     <nav className="navbar bg-dark border-bottom border-body navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
       <div className="container-fluid">

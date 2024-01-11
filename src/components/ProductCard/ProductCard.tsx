@@ -3,6 +3,8 @@ import {ProductModel} from "../../models/responses/ProductModel";
 import {Link} from "react-router-dom";
 import ProductService from "../../services/productService";
 import {HttpStatusCode} from "axios";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../store/actions/cartActions";
 
 type Props = {
 	product: ProductModel;
@@ -11,6 +13,8 @@ type Props = {
 };
 
 const ProductCard = (props: Props) => {
+
+
 	const deleteProduct = async () => {
 		try {
 			const response = await ProductService.delete(props.product.id);
@@ -22,6 +26,11 @@ const ProductCard = (props: Props) => {
 		} catch (e) {
 			alert("Product cannot be deleted");
 		}
+	};
+
+	const dispatch = useDispatch();
+	const addProductToCart = () => {
+		dispatch(addToCart(props.product));
 	};
 
 	return (
@@ -37,6 +46,7 @@ const ProductCard = (props: Props) => {
 				>
 					Details
 				</Link>
+				<button onClick={addProductToCart} className="btn btn-secondary">Add</button>
 				<button
 					onClick={() => {
 						deleteProduct();
