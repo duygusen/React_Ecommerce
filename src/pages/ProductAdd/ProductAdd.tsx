@@ -3,6 +3,8 @@ import * as Yup from "yup";
 import { passwordRule } from "../../utils/validation/customValidationRules";
 import FormikInput from "../../components/FormikInput/FormikInput";
 import FormikSelect from "../../components/FormikInput/FormikSelect";
+import ProductService from "../../services/productService";
+import { useEffect } from "react";
 
 type Props = {};
 
@@ -20,6 +22,11 @@ interface ProductAddFrom {
 }
 
 const ProductAdd = (props: Props) => {
+
+  useEffect(() => {
+    ProductService.getById(1).then(response => {});
+  }, []);
+
   const colorOptions = [
     { value: 0, label: "Bir renk seçin" },
     { value: 1, label: "Kırmızı" },
@@ -61,7 +68,7 @@ const ProductAdd = (props: Props) => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={(values) => {
-          console.log(values);
+          ProductService.getById(1).then(response => {});
         }}
       >
         <Form>
